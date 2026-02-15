@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>哈哈的2025-02半年度报告 | THE HAHA REPORT</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400&display=swap');
+
+        :root {
+            --bg-color: #f7f7f5;
+            --text-color: #111111;
+            --line-color: #000000;
+        }
+
+        /* 基础重置与高定排版 */
+        * { margin: 0; padding: 0; box-sizing: border-box; cursor: none; }
+        
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Noto Serif SC', 'Playfair Display', serif;
+            line-height: 1.8;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        ::selection { background-color: #111; color: #f7f7f5; }
+
+        /* 自定义鼠标 */
+        .cursor {
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            border-radius: 50%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            mix-blend-mode: difference;
+            transform: translate(-50%, -50%);
+            transition: width 0.3s, height 0.3s;
+            z-index: 9999;
+        }
+        .cursor.hovered { width: 60px; height: 60px; }
+
+        /* 布局容器 */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 5vh 8%;
+        }
+
+        /* 纽约时报风格头部 */
+        header {
+            text-align: center;
+            padding-bottom: 2rem;
+            border-bottom: 3px solid var(--line-color);
+            border-top: 1px solid var(--line-color);
+            margin-top: 3rem;
+            margin-bottom: 4rem;
+        }
+        
+        .date {
+            font-family: 'Playfair Display', serif;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            display: block;
+            margin: 1rem 0;
+            border-bottom: 1px solid var(--line-color);
+            padding-bottom: 0.5rem;
+        }
+
+        h1.title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -1px;
+            margin-bottom: 1rem;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            font-weight: 300;
+            font-style: italic;
+            color: #444;
+        }
+
+        /* 滚动动画类 */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* 内容版块 */
+        section {
+            margin-bottom: 6rem;
+            position: relative;
+        }
+        
+        section::before {
+            content: '';
+            position: absolute;
+            top: -2rem;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background-color: #ddd;
+        }
+
+        h2 {
+            font-family: 'Playfair Display', 'Noto Serif SC', serif;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+        
+        h2 span {
+            font-size: 1rem;
+            font-weight: 300;
+            margin-left: 1rem;
+            color: #666;
+            letter-spacing: 1px;
+        }
+
+        p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            text-align: justify;
+            color: #222;
+        }
+
+        .highlight {
+            font-weight: 700;
+            font-size: 1.25em;
+            display: block;
+            margin: 2rem 0;
+            padding-left: 1.5rem;
+            border-left: 4px solid var(--line-color);
+            font-style: italic;
+        }
+
+        .interactive-text {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .interactive-text::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            transform: scaleX(0);
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--line-color);
+            transform-origin: bottom right;
+            transition: transform 0.4s cubic-bezier(0.86, 0, 0.07, 1);
+        }
+        
+        .interactive-text:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+
+        /* 页脚 */
+        footer {
+            text-align: center;
+            padding: 4rem 0;
+            border-top: 3px solid var(--line-color);
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            h1.title { font-size: 3.5rem; }
+            .cursor { display: none; } /* 移动端隐藏自定义鼠标 */
+            * { cursor: auto; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="cursor" id="cursor"></div>
+
+    <div class="container">
+        <header class="reveal">
+            <span class="date">VOL. II — The Second Half of 2025</span>
+            <h1 class="title hover-target">The 2025<br>Report VOL. II</h1>
+            <p class="subtitle">A Semi-Annual Retrospective by Haha</p>
+        </header>
+
+        <section class="reveal">
+            <p class="highlight">“看到这个网页，意味着在过去的一年里，您曾在我人生的某个重要方向上给予过我指引或支持。”</p>
+            <p>新年大吉！这是一份属于我的半年度报告。我想用这种有些仪式感的方式，向你汇报我这半年的重要进展。我想让你知道，我非常感激在过去一年里你的引导和陪伴，我愿意随时用行动回馈你的需要；<span class="interactive-text hover-target">你的支持，正在化为我高速成长不可或缺的动力；）</span></p>
+        </section>
+
+        <section class="reveal">
+            <h2>学业与行业足迹 <span>ACADEMICS & CAREER</span></h2>
+            <p>从曼谷国际学校成功拿下双母语 IB Diploma 毕业后，我考入了<span class="interactive-text hover-target">香港大学，主修精算与计算机科学（Actuarial & CS）</span>。最近和朋友聊天时我有一个很深的感悟：AI 并没有消解学习的意义，反而让我们更容易地把接受教育回归到其本质。现在，“数学其实还是很有趣的”成为了我新的学习动力。</p>
+            <p>得益于贵人举荐，我在 <strong>Miracle Plus (奇绩创坛)</strong> 完成了实习，期间撰写了 4 万字的 AIGC 研报。随后，我续约半年，在香港协助创业者学校的项目落地，这让我有幸结识了许多我特别欣赏的前辈和朋友。</p>
+            <p>最近，我开启了为期八周的 <strong>Marco Polo Program</strong>，协助香港某券商研究产品方向（郑重声明：我不卖保险）。目前我正在协助将 AI 嵌入他们的系统，节后我将挑战一项壮举：<span class="interactive-text hover-target">单人在 4 周内完成原本需要 4 人耗时 12 周的产品流程。</span></p>
+        </section>
+
+        <section class="reveal">
+            <h2>AI 领域的投资 <span>THE AI INVESTMENT</span></h2>
+            <p>AI 真的是一门极度丰富的学科，每当我以为自己掌握了一些新工具，立刻就会有新的颠覆者出现。在 ADVX 时，我还在为 flomo 和 figma 惊叹，前天我已经熟练使用 <strong>manus</strong> 输出 Pitchdeck 了。</p>
+            <p>下一步，我决定加大在 AI 领域的个人投资（Investment）。我计划每月拨出约 500 的预算，不断尝试用最新的 AI 产品为工作提效（下一个准备测试的就是 Opus！）。</p>
+        </section>
+
+        <section class="reveal">
+            <h2>生活、情感与杠铃 <span>LIFE, LOVE & BARBELLS</span></h2>
+            <p>感情生活方面，在过去的半年里我开启了许多求偶的尝试，遗憾的是目前均以失败告终。<span class="interactive-text hover-target">如果您认识颜值和人品都很赞的 Gay，欢迎疯狂推给我聊聊！</span></p>
+            <p>令人欣慰的是，今年我和家里大人的关系变好了。一个人生活之后，我慢慢能更深地共情经营家庭的辛苦，于是我可以更坚定地表达关怀，并给出力所能及的支持。这一点让我感到无比开心。</p>
+            <p>此外，今年我成了健身房的常客，主练背。如今背肌与斜方肌齐飞，偏头痛的发作频率大幅减少。更充沛的精力让我实现了<span class="interactive-text hover-target">平均每天工作 13 小时</span>的成绩</p>
+        </section>
+
+        <section class="reveal">
+            <h2>新年展望 <span>2025 OUTLOOK</span></h2>
+            <p>对于接下来的日子，我有三个清晰的坐标：</p>
+            <p><strong>1. 资产配置：</strong> 在香港定投 S&P 和 AI index。</p>
+            <p><strong>2. 行事哲学：</strong> 践行张一鸣的“要么不做，要么就做到最好”，努力做一个张弛有度的完美主义者。</p>
+            <p><strong>3. 利他之心：</strong> 变得更善良，更利他。让更多人知道我能帮到他们什么。我的“约见计划”目前已经破200人次，接下来我对自己的要求也会增加，但我希望：<span class="interactive-text hover-target">每一面都能帮人一把，每杯咖啡都能带来一些改变。</span></p>
+        </section>
+
+        <footer class="reveal">
+            <p>Thank you for being part of my journey. 新的一年，如果你需要我帮忙（跑腿，技术需求，情感倾诉等等），欢迎使用我！我会像你支持我一样随时温暖支持你。Don't worry. I got your back! ;）</p>
+        </footer>
+    </div>
+
+    <script>
+        // 自定义鼠标逻辑
+        const cursor = document.getElementById('cursor');
+        const hoverTargets = document.querySelectorAll('.hover-target, h2, strong');
+
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+
+        hoverTargets.forEach(target => {
+            target.addEventListener('mouseenter', () => cursor.classList.add('hovered'));
+            target.addEventListener('mouseleave', () => cursor.classList.remove('hovered'));
+        });
+
+        // 滚动视差与浮现逻辑
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100; // 距离底部多少开始显示
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        
+        window.addEventListener("scroll", reveal);
+        reveal(); // 初始触发一次
+    </script>
+</body>
+</html>
+
